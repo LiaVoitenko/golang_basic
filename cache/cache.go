@@ -1,6 +1,6 @@
 package cache
 
-type Cache struct { // кастомный тип
+type Cache struct {
 	data map[string]any
 }
 
