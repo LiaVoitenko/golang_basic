@@ -20,11 +20,24 @@ Install the library using `go get`:
 
 ```bash
 go get github.com/LiaVoitenko/golang_basic
-
+```
 
 ---
 
-## Example How to Use
+
+## API Reference
+
+New() *Cache — creates a new cache instance
+
+Set(key string, value any) — stores a value in cache by key
+
+Get(key string) (any, bool) — retrieves value by key
+
+Delete(key string) — deletes value from cache
+
+---
+
+## Example Usage
 
 ```
 package main
@@ -38,18 +51,18 @@ import (
 func main() {
 	c := cache.New()
 
-	// Set value
 	c.Set("userId", 42)
+	userId, ok := c.Get("userId")
+	c.Set("userId", 43)
 
-	// Get value
-	value, ok := c.Get("userId")
-	fmt.Println(value, ok)
+	fmt.Println(userId, ok)
 
-	// Delete value
 	c.Delete("userId")
+	userId2, _ := c.Get("userId")
 
-	// Try to get deleted value
-	value, ok = c.Get("userId")
-	fmt.Println(value, ok)
+	fmt.Println(userId2)
 }
+
 ```
+
+---
